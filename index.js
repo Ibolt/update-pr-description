@@ -58,7 +58,7 @@ const run = async () => {
 
   const url = `/repos/${credentials.owner}/${credentials.repo}/pulls/${pullNumber}`;
   
-  core.info(params.body);
+  core.info(JSON.stringify(params));
   core.info(`Making a PATCH request to "${url}" with params "${JSON.stringify(params)}"`);
   await octokit.request(`PATCH ${url}`, params);
 };
