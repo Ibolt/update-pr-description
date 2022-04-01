@@ -57,10 +57,9 @@ const run = async () => {
   }
 
   const url = `/repos/${credentials.owner}/${credentials.repo}/pulls/${pullNumber}`;
-  
-  core.info(JSON.stringify(params));
-  core.info(`Making a PATCH request to "${url}" with params "${JSON.stringify(params)}"`);
-  await octokit.request(`PATCH ${url}`, params);
+  const jsonParams = JSON.stringify(params).replace("|", "\n");
+  core.info(`Making a PATCH request to "${url}" with params "${jsonParams}"`);
+  await octokit.request(`PATCH ${url}`, jsonParams);
 };
 
 // Github boolean inputs are strings https://github.com/actions/runner/issues/1483
