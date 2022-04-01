@@ -47,6 +47,8 @@ const run = async () => {
 
   if (prBody) {
     core.info(`Pull request #${pullNumber}'s body will be set to "${prBody}"`);
+    core.info(prBody);
+    core.info(params.body);
     params.body = prBody;
   }
 
@@ -56,7 +58,8 @@ const run = async () => {
   }
 
   const url = `/repos/${credentials.owner}/${credentials.repo}/pulls/${pullNumber}`;
-
+  
+  core.info(params);
   core.info(`Making a PATCH request to "${url}" with params "${JSON.stringify(params)}"`);
   await octokit.request(`PATCH ${url}`, params);
 };
