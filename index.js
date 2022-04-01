@@ -48,7 +48,7 @@ const run = async () => {
   if (prBody) {
     core.info(`Pull request #${pullNumber}'s body will be set to "${prBody}"`);
     core.info(prBody);
-    params.body = prBody;
+    params.body = "is this updating";
   }
 
   if (baseBranch && baseBranch !== pullRequestTargetBranch) {
